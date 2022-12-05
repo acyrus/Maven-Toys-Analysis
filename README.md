@@ -237,7 +237,7 @@ CREATE TEMPORARY TABLE UnitsSoldDaily
   GROUP BY p.product_id,st.store_id,s.sale_date;
  ```
  
-8. What are the units of each product sold each month?
+8. What are total units of each product sold each month for each store?
 ```
 CREATE TEMPORARY TABLE UnitsSoldMonthlyYearly
  SELECT 
