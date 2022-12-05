@@ -58,10 +58,10 @@ Establishing constraints such as primary and foreign keys also allows us to avoi
 gives us confidence that the data we are using is accurate.   
 
 ### Data Model
-![Maven Toys Database Schema](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
+![MavenToys Database Schema](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
 
 ### SQL Database Schema Creation
-[Maven Toys Database Creation](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
+[MavenToys Database Creation](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
 
 ### Importing Data Into CSV Files
 [CSV File Import](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
@@ -103,7 +103,6 @@ SELECT * FROM v_productsperstore;
 2.  Which units are not being sold by each of our 50 stores?
 ```
 -- Creation of the temporary table that will store the units sold for each product of each store
-
 CREATE TEMPORARY TABLE prodstoresales
 (
 	store_id INT,
@@ -145,30 +144,24 @@ DELIMITER ;
 
 CALL p_prodstoresales;
 
--- Filtering to return unsold products from each store 
-
-SELECT prodstoresales.*, p.product_name FROM prodstoresales
-JOIN products p ON p.product_id=prodstoresales.product_id
+SELECT * FROM prodstoresales
 WHERE units_sold=0;
 ```
 
-
-
-3. For each store. what is the sales and profit calculation of each transaction?
+3. What is the total sales and profit for each store?
 ```
--- Creation of a new column that will store the profit calculated for product
-
 ALTER TABLE products
 ADD COLUMN profit DOUBLE;
 
 UPDATE products
 SET profit=ROUND(product_price-product_cost);
 
--- Creation of a table that will calculate the sales and profit for each transaction
+
+-- Table to calculate sales and profit of each transaction within each store
 
 CREATE TEMPORARY TABLE SaleProfitCalc
 SELECT 
-	s.sale_id, s.sale_date, s.store_id, s.product_id, s.units, 
+    s.sale_id, s.sale_date, s.store_id, s.product_id, s.units, 
     p.product_cost, p.product_price,
     (p.product_cost)*s.units AS cost_price,
     (p.product_price)*s.units AS sales,
@@ -179,19 +172,58 @@ sales s
 JOIN products p 
 ON s.product_id=p.product_id;
 
-SELECT * FROM SaleProfitCalc;
+-- Finding the total sum and profit for each store
+SELECT 
+    st.store_name,
+    ROUND(SUM(spc.sales),2) AS sales,
+    ROUND(SUM(spc.profit),2) AS profit
+FROM
+    SaleProfitCalc spc
+        JOIN
+    stores st ON st.store_id = spc.store_id
+GROUP BY st.store_name;
 ```
-4. What is the daily running sales and profit for each store and each product?
+
+4. What is the total units sold, sales and profit for each product? 
 ```
 SELECT 
-	spc.sale_id, spc.sale_date, spc.store_id, spc.product_id, spc.units, 
-    spc.product_cost, spc.product_price, spc.cost_price, spc.sales,
+    p.product_name,
+    SUM(spc.units) AS units_sold,
+    ROUND(SUM(spc.sales), 2) AS sales,
+    ROUND(SUM(spc.profit), 2) AS profit
+FROM
+    SaleProfitCalc spc
+        JOIN
+    products p ON p.product_id = spc.product_id
+GROUP BY p.product_name;
+```
+
+5. Which cities surpassed $1 million in sales? What was the profit for these cities? 
+```
+SELECT 
+    st.store_city,
+    ROUND(SUM(spc.sales), 2) AS sales,
+    ROUND(SUM(spc.profit), 2) AS profit
+FROM
+    SaleProfitCalc spc
+        JOIN
+    stores st ON st.store_id = spc.product_id
+GROUP BY st.store_city
+HAVING ROUND(SUM(spc.sales), 2) > 1000000;
+```
+
+
+6. What is the daily running sales and profit for each store?
+```
+SELECT 
+	spc.sale_date, spc.store_id, spc.sales,
 	SUM(spc.sales) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_sales,
     SUM(spc.profit) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_profit
 FROM 
 SaleProfitCalc spc;
+
 ```
-5. What is the total running sales for each month across all stores?
+7. What is the total running sales for each month across all stores?
 ```
 WITH monthlysales AS
 (SELECT
@@ -210,9 +242,9 @@ FROM
 	monthlysales;
 ```
 
-6. What are the three best selling products within each of our stores?
+8. What are the three best selling products within each of our stores?
 ```
-SELECT st.store_name, p.product_name, aa.row_num
+SELECT st.store_name, p.product_name, aa.total_sales, aa.row_num
 FROM 
 (SELECT a.* FROM
 (SELECT
@@ -228,7 +260,7 @@ JOIN stores st ON st.store_id=aa.store_id
 JOIN products p ON p.product_id=aa.product_id;
 ```
 
-7. What is the number of units of each product sold within each story daily?
+9. What are the number of units of each product sold within each story daily?
 ```
 CREATE TEMPORARY TABLE UnitsSoldDaily
   SELECT
@@ -245,7 +277,7 @@ CREATE TEMPORARY TABLE UnitsSoldDaily
   GROUP BY p.product_id,st.store_id,s.sale_date;
  ```
  
-8. What is the total units of each product sold each month for each store?
+10. What are number units of each product sold each month?
 ```
 CREATE TEMPORARY TABLE UnitsSoldMonthlyYearly
  SELECT 
@@ -272,7 +304,7 @@ CREATE TEMPORARY TABLE UnitsSoldMonthlyYearly
  JOIN stores st ON st.store_id=usd.store_id
  GROUP BY YEAR(usd.sale_date), MONTH(usd.sale_date),p.product_id, st.store_id;
  ```
-9. What is the total revenue and profit of our remaining stock from all stores?
+11. What is the total revenue and profit of our remaining stock from all stores?
 ```
 WITH inventory_sales AS
 (SELECT 
@@ -315,44 +347,27 @@ This dashboard visualizes the number of units sold and examines the status of th
 
 ### 1. Which product categories drive the biggest profits? Is this the same across store locations?
 
-The Toys and Electronics categories were observed to be the most profitable product categories from January 2017 to September 2018, returning $1.08mil and $1.0mil in profits respectively. These account for more than 50% of Maven Toys’ total profit. 
-
-Regarding the Toys category, the sales of Lego Bricks and Action Figures are responsible for the lion’s share of profit, combining for $646,433 with a profit margin 
-of 12.5% and 37.5% respectively. 
-
-Of the three products offered in the Electronics category, the profit of $834,944 returned by Colorbuds makes it both the most profitable product of its category and overall, in the company. At a profit margin of 53.4% it accounts for 20.80% of all profits realized by Maven Toys.
-
-Across store locations, the trend of Toys and Electronics being the most profitable categories continues. Electronics is the most profitable category at Airport ($108,197) and Commercial ($287,574) stores, while Toys is the most profitable at Downtown ($630,029) and Residential ($136,214) stores. In all these store locations, Lego Bricks, Action Figures and Colorbuds are highlighted as the most profitable products. 
+From a review of the dashboard, it was observed that ‘Toys’ was the leading product category in profits 1.1mil, followed by Electronics at 1.0mil. 
+However, it was noted that Electronics had a profit margin of 44.6% making it the most profitable Product Category. 
+Comparing across store locations however reveals that Toys were the most profitable in Downtown and Residential areas only.. Electronics was most profitable at Airports and Commercial, 
 
 ### 2. Are there any seasonal trends or patterns in the sales data?
-The data shows a gradual increase in sales from January ($542,554) to April 2017 ($681,072). Afterwards, sales trends downwards until August ($489,422). Given that this timeframe coincides with the summer season, individuals are likely to be more engaged in outdoor activities which may explain the reason for decreased sales. 
-
-After August, monthly sales trends upwards constantly from $585,844 in September to $661,304 in November. These three months of increases culminate in a massive spike to $877,203 in December, which is the highest sales amount recorded in any month. This end of year occurrence is likely due to increased demand for Christmas. 
-
-In 2018, there is a decrease in monthly sales for two months to $722,632 in February, followed by a significant increase in March to $883,515. For the next six months of 2018, the sales data follows a similar trend to that of 2017, remaining relatively constant from April to June and then decreasing from July to September. 
-
-It should be noted that as of September 2018 ($6.96mil), cumulative sales have exceeded that of September 2017 ($5.32mil) at the same point in time. Taking into consideration that the total sales for 2017 was $7.48mil and the sales data of 2018 follows a similar pattern to that of 2017, Maven Toys should expect to surpass 
-that value by the end of the year.  
+It was noticed that there was a decrease in sales June to August, 2017 followed by a steady increase from September to December. The spike in December of 2017 
+is most likely due to increased demand of toys for Christmas. From 2018 onwards, sales decrease somewhat but maintains a constant level until July until it drops again, similar to what happened the year before. If history repeats itself, the business should expect an increase in sales once again at the end of the year. 
 
 ### 3. Are sales being lost with out-of-stock products at certain locations?
-Since each location offers all 35 products, attention is paid to individual stores. 
+An initial observation displays that not every store offers all 35 products. One may assume that stores that offer all 35 products will generally have more sales, 
+but this is not necessarily the case. The top selling store, Ciudad de Mexico 2 with 554k USD in sales only offers 30 products. Additionally, of the top 5 selling stores, 3 of them offer only 30 products. It is assumed that these stores all do not offer the same 5 products.
+Given this context, these 5 remaining products likely do not affect much sales.
 
-An initial observation shows that not every store has offered all 35 products from January 2017 – September 2018. Of the 50 stores, 40% of them offered only 30 products or less. One may assume that stores which offered every product will generally have more sales, but this is not necessarily the case. The top two selling stores, Ciudad de Mexico 2 ($554,553) and Guadalajara 3 ($449,354) only offered 30 products. Additionally, of the top 10 selling stores, 5 of them offered only 30 products. 
+### 4. How much money is tied up in inventory at the toy stores? 
+According to the dashboard, Maven Toys should expect 410k in sales and 110k in profit based on the remaining inventory across all its stores. This is assuming
+that all product costs and prices remain the same.
 
-A further analysis of products reveals that of the 50 stores, 24 stores did not offer the Monopoly product, 23 stores did not offer the Chutes & Ladders product, 22 
-stores did not offer the Uno Card Game product, and 20 stores did not offer the Classic Dominoes as well as the Mini Basketball Hop product. Further analysis also shows that these items were among the worst 10 selling products, with none exceeding $100,000 in sales. 
-
-Offering these additional products at stores may not significantly increase sales as these products were not proven to be in great demand. 
-
-
-### 4. How much money is tied up in inventory at the toy stores? How long will it last?
-According to the stock on hand, Maven Toys should expect 410k in sales and 110k in profit across all its stores. This is assuming that all product costs and prices remain the same.
-
-Currently, there are 29,742 units of products across all stores. A high-level overview suggests that this figure is insufficient to meet the monthly demand of customers, as the cumulative monthly average of units sold is approximately 52,000 units. It should be noted however, that the adequacy of stock will vary from store to store. 
-
-Despite a decrease in the number of units sold within the past 3 months, the average amount of units sold has trended upwards. Judging from patterns previously observed, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to 
-acquire more than its monthly average to meet the end of year demand.
-
+### 5. How long will it last?
+Currently, there are 29,742 units of toys across all stores. A high level overview suggests that this figure is inadequate to meet the monthly demand of customers, 
+as the monthly average of units sold thus far is approximately 52,000 units. It should be noted however, that this figure will vary from store to store. 
+Despite an increase in the number of units sold within the past 3 months, the average amount of units being sold has trended upwards. Judging from prior quarters, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to acquire more than 52,000 units monthly in order to meet the end of year demand. 
 
  
 
