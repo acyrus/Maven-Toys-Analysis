@@ -144,6 +144,8 @@ DELIMITER ;
 
 CALL p_prodstoresales;
 
+-- Filtering to return unsold products from each store 
+
 SELECT prodstoresales.*, p.product_name FROM prodstoresales
 JOIN products p ON p.product_id=prodstoresales.product_id
 WHERE units_sold=0;
