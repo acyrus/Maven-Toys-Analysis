@@ -103,6 +103,7 @@ SELECT * FROM v_productsperstore;
 2.  Which units are not being sold by each of our 50 stores?
 ```
 -- Creation of the temporary table that will store the units sold for each product of each store
+
 CREATE TEMPORARY TABLE prodstoresales
 (
 	store_id INT,
@@ -155,11 +156,15 @@ WHERE units_sold=0;
 
 3. For each store. what is the sales and profit calculation of each transaction?
 ```
+-- Creation of a new column that will store the profit calculated for product
+
 ALTER TABLE products
 ADD COLUMN profit DOUBLE;
 
 UPDATE products
 SET profit=ROUND(product_price-product_cost);
+
+-- Creation of a table that will calculate the sales and profit for each transaction
 
 CREATE TEMPORARY TABLE SaleProfitCalc
 SELECT 
