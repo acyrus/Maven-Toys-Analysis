@@ -1,5 +1,5 @@
 # Maven Toys Analysis
-Sales Analysis of the Maven Toys Chain Stores in Mexico.
+Sales and Inventory analysis of the Maven Toys Chain Stores in Mexico.
 
 # Overview
 We have been provided with sales & inventory data for a fictitious chain of toy stores in Mexico called Maven Toys, 
@@ -52,7 +52,7 @@ We are provided with four tables which contain the following fields:
 # Data Preparation:
 Given the nature of the information provided, it is beneficial to place it into a MySQL database. 
 The data has been separated into multiple tables that can be linked to each other based on identical fields. 
-Queries provide for quick and easy manipulation of data and access to database insights. 
+Queries provide for quick and easy manipulation of data and access to useful database insights. 
 The usage of a database also guarantees a level of data integrity based on the enforced data types within our tables. 
 Establishing constraints such as primary and foreign keys also allows us to avoid incorrect values and duplicated data which 
 gives us confidence that the data we are using is accurate.   
@@ -285,8 +285,8 @@ FROM
 	inventory_sales invs;
  ```
 # Data Visualization
-After completing our initial analysis in MySQL, selected queries were exorted to Power BI, a visualization tool. Data visualization is essential, as the grahical 
-representation of data sets provides context to our data and allows us to visualze trends and patterns much more easily. 
+After completing our initial analysis in MySQL, selected queries were exorted to Power BI, a visualization tool. Data visualization is essential, 
+as the grahical representation of data sets provides context to our data and allows us to visualze trends and patterns much more easily. 
 
 [Maven Toys Dashboards (PDF)](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Dashboards.pdf)
 
@@ -302,4 +302,32 @@ most significantly.
 This dashboard visualizes the number of units sold and examines the status of the current stock on hand. Equipped with similar filter capabilities as the previous dashboard, this dashboard provides insight into the number of units sold across time, which assists Maven Toys in planning for future demand. 
 
 ![Maven Toys Units and Inventory Dashboard](https://user-images.githubusercontent.com/45236211/205646328-dfd74f59-a591-4746-a8dc-796c04851d2b.jpg)
+
+# Discussion
+
+### 1. Which product categories drive the biggest profits? Is this the same across store locations?
+
+From a review of the dashboard, it was observed that ‘Toys’ was the leading product category in profits 1.1mil, followed by Electronics at 1.0mil. 
+However, it was noted that Electronics had a profit margin of 44.6% making it the most profitable Product Category. 
+Comparing across store locations however reveals that Toys were the most profitable in Downtown and Residential areas only.. Electronics was most profitable at Airports and Commercial, 
+
+### 2. Are there any seasonal trends or patterns in the sales data?
+It was noticed that there was a decrease in sales June to August, 2017 followed by a steady increase from September to December. The spike in December of 2017 
+is most likely due to increased demand of toys for Christmas. From 2018 onwards, sales decrease somewhat but maintains a constant level until July until it drops again, similar to what happened the year before. If history repeats itself, the business should expect an increase in sales once again at the end of the year. 
+
+### 3. Are sales being lost with out-of-stock products at certain locations?
+An initial observation displays that not every store offers all 35 products. One may assume that stores that offer all 35 products will generally have more sales, 
+but this is not necessarily the case. The top selling store, Ciudad de Mexico 2 with 554k USD in sales only offers 30 products. Additionally, of the top 5 selling stores, 3 of them offer only 30 products. It is assumed that these stores all do not offer the same 5 products.
+Given this context, these 5 remaining products likely do not affect much sales.
+
+### 4. How much money is tied up in inventory at the toy stores? 
+According to the dashboard, Maven Toys should expect 410k in sales and 110k in profit based on the remaining inventory across all its stores. This is assuming
+that all product costs and prices remain the same.
+
+### 5. How long will it last?
+Currently, there are 29,742 units of toys across all stores. A high level overview suggests that this figure is inadequate to meet the monthly demand of customers, 
+as the monthly average of units sold thus far has amounted to 52,000 units. It should be noted however, that this figure will vary from store to store. 
+Despite an increase in the number of units sold within the past 3 months, the average amount of units being sold has trended upwards. Judging from prior quarters, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to acquire more than 52,000 units monthly in order to meet the end of year demand. 
+
+ 
 
