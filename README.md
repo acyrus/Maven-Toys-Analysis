@@ -228,7 +228,7 @@ HAVING ROUND(SUM(spc.sales), 2) > 1000000;
 SELECT 
 	spc.sale_date, spc.store_id, spc.sales,
 	SUM(spc.sales) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_sales,
-    SUM(spc.profit) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_profit
+        SUM(spc.profit) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_profit
 FROM 
 SaleProfitCalc spc;
 
@@ -237,7 +237,7 @@ SaleProfitCalc spc;
 ```
 WITH monthlysales AS
 (SELECT
-	spc.sale_date,
+    spc.sale_date,
     MONTH(spc.sale_date) AS month,
     YEAR(spc.sale_date) AS year,
     SUM(spc.sales) AS total_sales
