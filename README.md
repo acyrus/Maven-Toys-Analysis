@@ -337,11 +337,10 @@ stores did not offer the Uno Card Game product, and 20 stores did not offer the 
 Offering these additional products at stores may not significantly increase sales as these products were not proven to have great demand. 
 
 
-### 4. How much money is tied up in inventory at the toy stores? 
+### 4. How much money is tied up in inventory at the toy stores? How long will it last?
 According to the dashboard, Maven Toys should expect 410k in sales and 110k in profit based on the remaining inventory across all its stores. This is assuming that 
 all product costs and prices remain the same.
 
-### 5. How long will it last?
 Currently, there are 29,742 units of products across all stores. A high-level overview suggests that this figure is insufficient to meet the monthly demand of customers, as the cumulative monthly average of units sold is approximately 52,000 units. It should be noted however, that the adequacy of stock will vary from store to store. 
 
 Despite a decrease in the number of units sold within the past 3 months, the average amount of units sold has trended upwards. Judging from patterns previously observed, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to 
