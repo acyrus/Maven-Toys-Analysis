@@ -65,4 +65,20 @@ gives us confidence that the data we are using is accurate.
 ![MavenToys Database Schema](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
 
 ### SQL Database Schema Creation
-[Data Preparation in MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Preparation.sql)
+See the repository of MySQL Code for this section: - [Database Schema Creation](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
+
+### Importing Data Into CSV Files
+Two Issues arose while importing the data:  
+
+1) The date format of the CSV files was dd/mm/yy which is a violation of MySQL’s date format.   
+2) The product cost and price within the products table were preceded with the ‘$’ symbol, which would not be accepted as a numeric datatype within MySQL.  
+
+In order to correct this issues, the following actions were taken:  
+1) Product Cost and Product Price were initially imported as a varchar datatype.  
+2) The ‘$’ symbol was removed and the remaining string was trimmed of any additional values.  
+3) The datatype of the field was then changed from string to double.  
+
+
+
+
+
