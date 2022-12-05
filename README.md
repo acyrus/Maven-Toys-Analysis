@@ -334,7 +334,7 @@ An initial observation shows that not every store has offered all 35 products fr
 A further analysis of products reveals that of the 50 stores, 24 stores did not offer the Monopoly product, 23 stores did not offer the Chutes & Ladders product, 22 
 stores did not offer the Uno Card Game product, and 20 stores did not offer the Classic Dominoes as well as the Mini Basketball Hop product. Further analysis also shows that these items were among the worst 10 selling products, with none exceeding $100,000 in sales. 
 
-Offering these additional products at stores may not significantly increase sales as these products were not proven to have great demand. 
+Offering these additional products at stores may not significantly increase sales as these products were not proven to be in great demand. 
 
 
 ### 4. How much money is tied up in inventory at the toy stores? How long will it last?
