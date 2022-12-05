@@ -331,7 +331,7 @@ Since each location offers all 35 products, attention is paid to individual stor
 
 An initial observation shows that not every store has offered all 35 products from January 2017 – September 2018. Of the 50 stores, 40% of them offered only 30 products or less. One may assume that stores which offered every product will generally have more sales, but this is not necessarily the case. The top two selling stores, Ciudad de Mexico 2 ($554,553) and Guadalajara 3 ($449,354) only offered 30 products. Additionally, of the top 10 selling stores, 5 of them offered only 30 products. 
 
-An observation of products reveals that of the 50 stores, 24 stores did not offer the Monopoly product, 23 stores did not offer the Chutes & Ladders product, 22 
+A further analysis of products reveals that of the 50 stores, 24 stores did not offer the Monopoly product, 23 stores did not offer the Chutes & Ladders product, 22 
 stores did not offer the Uno Card Game product, and 20 stores did not offer the Classic Dominoes as well as the Mini Basketball Hop product. Further analysis also shows that these items were among the worst 10 selling products, with none exceeding $100,000 in sales. 
 
 Offering these additional products at stores may not significantly increase sales as these products were not proven to have great demand. 
