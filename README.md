@@ -20,7 +20,7 @@ The major questions that we will attempt to answer are:
 The data used within this project is provided from the following link:  
 [Maven Toys Sales | Kaggle](https://www.kaggle.com/datasets/mysarahmadbhat/toy-sales)
 
-We are provided with four tables which contain the following fields:
+We are given four tables in CSV format which contain the following fields:
 
 ### Products (35 unique products)
 1) Product_ID - Unique ID given to each product offered  
@@ -66,7 +66,7 @@ gives us confidence that the data we are using is accurate.
 ### Importing Data Into CSV Files
 [CSV File Import](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
 
-The data provided is fairly simple and easy to understand. After double checking imports and comparing it to source data, we are confident 
+The data provided is fairly simple and easy to understand. After verifying imports and comparing it to source data, we are confident 
 that the data has been imported successfully and accurately. 
 
 
@@ -103,6 +103,7 @@ SELECT * FROM v_productsperstore;
 2.  Which units are not being sold by each of our 50 stores?
 ```
 -- Creation of the temporary table that will store the units sold for each product of each store
+
 CREATE TEMPORARY TABLE prodstoresales
 (
 	store_id INT,
@@ -144,7 +145,16 @@ DELIMITER ;
 
 CALL p_prodstoresales;
 
-SELECT * FROM prodstoresales
+-- Filtering to return unsold products from each store 
+SELECT 
+    st.store_name,
+    ps.product_name,
+    ps.units_sold
+FROM
+	prodstoresales ps
+JOIN 
+	stores st ON
+ps.store_id=st.store_id
 WHERE units_sold=0;
 ```
 
@@ -244,7 +254,7 @@ FROM
 
 8. What are the three best selling products within each of our stores?
 ```
-SELECT st.store_name, p.product_name, aa.total_sales, aa.row_num
+SELECT st.store_name, p.product_name, aa.row_num
 FROM 
 (SELECT a.* FROM
 (SELECT
@@ -257,7 +267,8 @@ SaleProfitCalc spc
 GROUP BY spc.store_id,spc.product_id) a
 WHERE a.row_num<=3) aa
 JOIN stores st ON st.store_id=aa.store_id
-JOIN products p ON p.product_id=aa.product_id;
+JOIN products p ON p.product_id=aa.product_id
+ORDER BY st.store_id, aa.row_num;
 ```
 
 9. What are the number of units of each product sold within each story daily?
