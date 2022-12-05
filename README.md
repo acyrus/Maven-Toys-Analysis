@@ -377,7 +377,7 @@ According to the dashboard, Maven Toys should expect 410k in sales and 110k in p
 that all product costs and prices remain the same.
 
 ### 5. How long will it last?
-Currently, there are 29,742 units of toys across all stores. A high level overview suggests that this figure is inadequate to meet the monthly demand of customers, 
+Currently, there are 29,742 units of products across all stores. A high level overview suggests that this figure is inadequate to meet the monthly demand of customers, 
 as the monthly average of units sold thus far is approximately 52,000 units. It should be noted however, that this figure will vary from store to store. 
 Despite an increase in the number of units sold within the past 3 months, the average amount of units being sold has trended upwards. Judging from prior quarters, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to acquire more than 52,000 units monthly in order to meet the end of year demand. 
 
