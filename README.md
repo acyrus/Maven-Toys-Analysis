@@ -76,9 +76,8 @@ Exploratory Data Analysis techniques in MySQL will be used to analyze the prepar
 which helps to understand patterns, detect outliers and find interesting relations among the variables. We will utilize various SQL elements such
 as Aggregate Functions, Joins, Temporary Tables, CTEs, Views, Stored Procedures and Window Functions. 
 
-### Exploratory Data Analysis
 
-[Exploratory Data Analysis In MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
+[Complete Data Analysis Repository In MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/SQL%20Data%20Analysis.sql)
 
 
 1. How many of our 35 products are offered in each of our 50 stores?
@@ -285,3 +284,20 @@ SELECT
 FROM
 	inventory_sales invs;
  ```
+# Data Visualization
+After completing our initial analysis in MySQL, selected queries were exorted to Power BI, a visualization tool. Data visualization is essential, as the grahical 
+representation of data sets provides context to our data and allows us to visualze trends and patterns much more easily. 
+
+[MavenToys Dashboards PDF](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Power%20BI%20Dashboards.pdf)
+
+### Sales and Profit Dashbaord
+This dashboard provides graphical illustrations of Maven Toys' sales and profit statistics with the ability to filter the result by multiple categories 
+such as Date, Store Location, and Product Category. Such information enables Maven Toys to identify elements of its business which drive sales and profits
+most significantly. 
+
+
+
+### Units and Inventory Dashboard
+This dashboard visualizes the number of units sold and examines the status of the current stock on hand. Equipped with similar filter capabilities as the previous dashboard, this dashboard provides insight into the number of units sold across time, which assists Maven Toys in planning for future demand. 
+
+
