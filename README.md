@@ -154,10 +154,9 @@ SELECT
     ps.units_sold
 FROM
 	prodstoresales ps
-JOIN 
-	stores st ON
-ps.store_id=st.store_id
-WHERE units_sold=0;
+JOIN stores st ON ps.store_id = st.store_id 
+WHERE 
+  units_sold = 0;
 ```
 
 3. What is the total sales and profit for each store?
