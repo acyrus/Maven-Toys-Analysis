@@ -75,8 +75,8 @@ that the data has been imported successfully and accurately.
 
 # Data Analysis
 Exploratory Data Analysis techniques in MySQL will be used to analyze the prepared dataset. This will allow us to produce descriptive statistics
-which helps to understand patterns, detect outliers and find interesting relations among the variables. The aggregate functions available in MySQL
-enable us to compute descriptive statistics. 
+which helps to understand patterns, detect outliers and find interesting relations among the variables. We will utilize various SQL elements such
+as Aggregate Functions, Joins, Temporary Tables, CTEs, Stored Procedures and Window Functions. 
 
 
 
