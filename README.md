@@ -60,7 +60,9 @@ Establishing constraints such as primary and foreign keys also allows us to avoi
 gives us confidence that the data we are using is accurate.   
 
 ### Data Model
-[Database Schema within MySQL](https://drawsql.app/teams/er-diagrams/diagrams/mexico-toy-sales
+[Database Schema within MySQL](https://drawsql.app/teams/er-diagrams/diagrams/mexico-toy-sales)
+
+
 
 
 
