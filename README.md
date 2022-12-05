@@ -68,7 +68,15 @@ gives us confidence that the data we are using is accurate.
 ### Importing Data Into CSV Files
 [CSV File Import](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
 
+The data provided is fairly simple and easy to understand. After double checking imports and comparing it to source data, we are confident 
+that the data has been imported successfully and accurately. 
 
+
+
+# Data Analysis
+Exploratory Data Analysis techniques in MySQL will be used to analyze the prepared dataset. This will allow us to produce descriptive statistics
+which helps to understand patterns, detect outliers and find interesting relations among the variables. The aggregate functions available in MySQL
+enable us to compute descriptive statistics. 
 
 
 
