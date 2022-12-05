@@ -150,7 +150,7 @@ WHERE units_sold=0;
 
 
 
-3. What is the sales and profit calculation of each transaction within our stores?
+3. For each store. what is the sales and profit calculation of each transaction?
 ```
 ALTER TABLE products
 ADD COLUMN profit DOUBLE;
@@ -220,7 +220,7 @@ JOIN stores st ON st.store_id=aa.store_id
 JOIN products p ON p.product_id=aa.product_id;
 ```
 
-7. What are the number of units of each product sold within each story daily?
+7. What is the number of units of each product sold within each story daily?
 ```
 CREATE TEMPORARY TABLE UnitsSoldDaily
   SELECT
@@ -237,7 +237,7 @@ CREATE TEMPORARY TABLE UnitsSoldDaily
   GROUP BY p.product_id,st.store_id,s.sale_date;
  ```
  
-8. What are total units of each product sold each month for each store?
+8. What is the total units of each product sold each month for each store?
 ```
 CREATE TEMPORARY TABLE UnitsSoldMonthlyYearly
  SELECT 
