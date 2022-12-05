@@ -62,8 +62,7 @@ gives us confidence that the data we are using is accurate.
 ### Data Model
 [Database Schema within MySQL](https://drawsql.app/teams/er-diagrams/diagrams/mexico-toy-sales)
 
+![MavenToys Database Schema](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
 
-
-
-
+### SQL Database Schema Creation
 [Data Preparation in MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Preparation.sql)
