@@ -288,16 +288,18 @@ FROM
 After completing our initial analysis in MySQL, selected queries were exorted to Power BI, a visualization tool. Data visualization is essential, as the grahical 
 representation of data sets provides context to our data and allows us to visualze trends and patterns much more easily. 
 
-[MavenToys Dashboards PDF](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Power%20BI%20Dashboards.pdf)
+[Maven Toys Dashboard PDF](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Dashboards.pdf)
 
 ### Sales and Profit Dashbaord
 This dashboard provides graphical illustrations of Maven Toys' sales and profit statistics with the ability to filter the result by multiple categories 
 such as Date, Store Location, and Product Category. Such information enables Maven Toys to identify elements of its business which drive sales and profits
 most significantly. 
 
+![Maven Toys Sales and Profit Dashboard](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Dashboards.pdf)
 
 
 ### Units and Inventory Dashboard
 This dashboard visualizes the number of units sold and examines the status of the current stock on hand. Equipped with similar filter capabilities as the previous dashboard, this dashboard provides insight into the number of units sold across time, which assists Maven Toys in planning for future demand. 
 
+![Maven Toys Units and Inventory Dashboard](https://user-images.githubusercontent.com/45236211/205646328-dfd74f59-a591-4746-a8dc-796c04851d2b.jpg)
 
