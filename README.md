@@ -60,14 +60,14 @@ Establishing constraints such as primary and foreign keys also allows us to avoi
 gives us confidence that the data we are using is accurate.   
 
 ### Data Model
-[Database Schema within MySQL](https://drawsql.app/teams/er-diagrams/diagrams/mexico-toy-sales)
-
 ![MavenToys Database Schema](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
 
 ### SQL Database Schema Creation
-See the repository of MySQL Code for this section: - [Database Schema Creation](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
+Repository - [MavenToys Database](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
 
 ### Importing Data Into CSV Files
+Repository - [CSV File Import](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
+
 Two Issues arose while importing the data:  
 
 1) The date format of the CSV files was dd/mm/yy which is a violation of MySQL’s date format.   
