@@ -295,13 +295,13 @@ This dashboard provides graphical illustrations of Maven Toys' sales and profit 
 such as Date, Store Location, and Product Category. Such information enables Maven Toys to identify elements of its business which drive sales and profits
 most significantly. 
 
-![Maven Toys Sales and Profit Dashboard](https://user-images.githubusercontent.com/45236211/205647077-75ecaf7a-d976-44c9-8bb0-a6a35ecca434.jpg)
+![Maven Toys Sales and Profit Dashboard](https://user-images.githubusercontent.com/45236211/205670321-1b005bec-3d67-4dd7-9039-580b486e9256.jpg)
 
 
 ### Units and Inventory Dashboard
 This dashboard visualizes the number of units sold and examines the status of the current stock on hand. Equipped with similar filter capabilities as the previous dashboard, this dashboard provides insight into the number of units sold across time, which assists Maven Toys in planning for future demand. 
 
-![Maven Toys Units and Inventory Dashboard](https://user-images.githubusercontent.com/45236211/205646328-dfd74f59-a591-4746-a8dc-796c04851d2b.jpg)
+![Maven Toys Units and Inventory Dashboard](https://user-images.githubusercontent.com/45236211/205670508-51eed1b5-b688-48a5-bbf6-e8e0e83cc0e3.jpg)
 
 # Discussion
 
