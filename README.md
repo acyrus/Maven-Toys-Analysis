@@ -60,11 +60,11 @@ gives us confidence that the data we are using is accurate.
 ### Data Model
 ![MavenToys Database Schema Repository in MySQL](https://user-images.githubusercontent.com/45236211/205615304-81c3d805-5bdc-4004-81a5-be2990bf2d0f.PNG)
 
-### SQL Database Schema Creation
+### Database Schema Creation
 [MavenToys Database Creation in MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Database%20Schema%20Creation.sql)
 
 ### Importing Data Into CSV Files
-[CSV File Import](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
+[CSV File Import in MySQL](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Data%20Import%20from%20CSV%20Files.sql)
 
 The data provided is fairly simple and easy to understand. After verifying imports and comparing it to source data, we are confident 
 that the data has been imported successfully and accurately. 
