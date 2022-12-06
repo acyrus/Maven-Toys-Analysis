@@ -224,7 +224,7 @@ HAVING ROUND(SUM(spc.sales), 2) > 1000000;
 ```
 
 
-6. What is the daily running sales and profit for each store?
+6. For each store, what is the daily running sales and profit?
 ```
 SELECT 
   spc.sale_date, 
@@ -246,7 +246,7 @@ FROM
   SaleProfitCalc spc;
 
 ```
-7. What is the total running sales for each month across all stores?
+7. For all stores, what is the total running sales for each month?
 ```
 WITH monthlysales AS (
   SELECT 
@@ -271,7 +271,7 @@ FROM
   monthlysales;
 ```
 
-8. What are the three best selling products within each of our stores?
+8. For each store, what are the three best selling products?
 ```
 SELECT 
   st.store_name, 
@@ -309,7 +309,7 @@ ORDER BY
 
 ```
 
-9. What are the number of units of each product sold within each story daily?
+9. For each store, what is the amount of each product sold daily?
 ```
 CREATE TEMPORARY TABLE UnitsSoldDaily 
 SELECT 
@@ -327,7 +327,7 @@ GROUP BY
   s.sale_date;
  ```
  
-10. What are number units of each product sold each month?
+10. For each store, what is the amount of each product sold monthly?
 ```
 CREATE TEMPORARY TABLE UnitsSoldMonthlyYearly
  SELECT 
@@ -416,11 +416,10 @@ An initial observation displays that not every store offers all 35 products. One
 but this is not necessarily the case. The top selling store, Ciudad de Mexico 2 with 554k USD in sales only offers 30 products. Additionally, of the top 5 selling stores, 3 of them offer only 30 products. It is assumed that these stores all do not offer the same 5 products.
 Given this context, these 5 remaining products likely do not affect much sales.
 
-### 4. How much money is tied up in inventory at the toy stores? 
-According to the dashboard, Maven Toys should expect 410k in sales and 110k in profit based on the remaining inventory across all its stores. This is assuming
+### 4. How much money is tied up in inventory at the toy stores? How long will it last?
+Maven Toys should expect 410k in sales and 110k in profit based on the remaining inventory across all its stores. This is assuming
 that all product costs and prices remain the same.
 
-### 5. How long will it last?
 Currently, there are 29,742 units of products across all stores. A high level overview suggests that this figure is inadequate to meet the monthly demand of customers, 
 as the monthly average of units sold thus far is approximately 52,000 units. It should be noted however, that this figure will vary from store to store. 
 Despite an increase in the number of units sold within the past 3 months, the average amount of units being sold has trended upwards. Judging from prior quarters, it is likely that demand in the next three months will exceed the monthly average of units sold. If the trend continues, Maven Toys will need to acquire more than 52,000 units monthly in order to meet the end of year demand. 
