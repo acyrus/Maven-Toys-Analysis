@@ -8,9 +8,9 @@ INTO TABLE stores FIELDS TERMINATED BY ',' ENCLOSED BY '"' IGNORE 1 ROWS
 (
 	store_id,
 	store_name,
-    store_city,
+        store_city,
 	store_location,
-    @v_date
+        @v_date
 )
 
 SET store_open_date=STR_TO_DATE(@v_date,'%Y-%m-%d');
@@ -21,9 +21,9 @@ INTO TABLE products FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES TERMINATED BY
 (
 	product_id,
 	product_name,
-    product_category,
+        product_category,
 	product_cost,
-    product_price
+        product_price
 );
 
 /*
@@ -63,10 +63,10 @@ LOAD DATA LOCAL INFILE 'C:\\Users\\cyrus\\OneDrive\\Desktop\\SQL Datasets\\Maven
 INTO TABLE sales FIELDS TERMINATED BY ',' ENCLOSED BY '"' IGNORE 1 ROWS
 (
 	sale_id,
-    @v_sale_date,
-    store_id,
-    product_id,
-    units
+        @v_sale_date,
+        store_id,
+        product_id,
+        units
 )
 
 SET sale_date=STR_TO_DATE(@v_sale_date,'%Y-%m-%d');
@@ -77,5 +77,5 @@ INTO TABLE inventory FIELDS TERMINATED BY ',' ENCLOSED BY '"' IGNORE 1 ROWS
 (
 	store_id,
 	product_id,
-    stock_on_hand
+        stock_on_hand
 );
