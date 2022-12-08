@@ -445,7 +445,7 @@ Offering these additional products at stores may not significantly increase sale
 
 ### 4. How much money is tied up in inventory at the toy stores? How long will it last?
 
-Based to the current inventory, Maven Toys should expect 410k in sales and 110k in profit across all its stores. This is assuming that all product costs and prices remain the same.
+Based on the current inventory, Maven Toys should expect 410k in sales and 110k in profit across all its stores. This is assuming that all product costs and prices remain the same.
 
 Currently, there are 29,742 units of products across all stores. A high-level overview suggests that this figure is insufficient to meet the monthly demand of customers, as the cumulative monthly average of units sold is approximately 52,000 units. It should be noted however, that the adequacy of stock will vary from store to store. 
 
