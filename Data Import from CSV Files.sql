@@ -37,7 +37,7 @@ BEGIN
 	UPDATE products
 	SET product_cost=REPLACE(product_cost,'$','');
     
-    UPDATE products
+        UPDATE products
 	SET product_price=REPLACE(product_price,'$','');
 
 	UPDATE products
