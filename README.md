@@ -112,7 +112,8 @@ CREATE TEMPORARY TABLE prodstoresales
     units_sold INT
 );
 
--- Procedure which returns the sum of units sold for each product within each store, including products not sold by certain stores
+-- Procedure which returns the sum of units sold for each product within each store, including products 
+not sold by certain stores
 
 DELIMITER $$ CREATE PROCEDURE IF NOT EXISTS p_prodstoresales() BEGIN DECLARE v_store_id INT;
 SET 
