@@ -19,7 +19,7 @@ CREATE VIEW v_productsperstore AS
 -- Creation of temporary table that will store the amount of units sold for each product of each store
 CREATE TEMPORARY TABLE prodstoresales
 (
-	store_id INT,
+    store_id INT,
     product_id INT,
     product_name VARCHAR(100),
     units_sold INT
@@ -29,7 +29,7 @@ CREATE TEMPORARY TABLE prodstoresales
 DELIMITER $$
 CREATE PROCEDURE IF NOT EXISTS p_prodstoresales()
 BEGIN
-	 DECLARE v_store_id INT;
+     DECLARE v_store_id INT;
      SET v_store_id=1;
  
  WHILE (v_store_id < 51) DO
@@ -86,7 +86,7 @@ ORDER BY COUNT(p.product_name) DESC;
 DROP TEMPORARY TABLE SaleProfitCalc;
 CREATE TEMPORARY TABLE SaleProfitCalc
 SELECT 
-	s.sale_id, s.sale_date, s.store_id, s.product_id, s.units, 
+    s.sale_id, s.sale_date, s.store_id, s.product_id, s.units, 
     p.product_cost, p.product_price,
     (p.product_cost)*s.units AS cost_price,
     (p.product_price)*s.units AS sales,
@@ -136,8 +136,8 @@ HAVING ROUND(SUM(spc.sales), 2) > 1000000;
 
 -- Finding the daily total running sales and profit for each store
 SELECT 
-	spc.sale_date, spc.store_id, spc.sales,
-	SUM(spc.sales) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_sales,
+    spc.sale_date, spc.store_id, spc.sales,
+    SUM(spc.sales) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_sales,
     SUM(spc.profit) OVER (PARTITION BY spc.store_id ORDER BY spc.store_id, spc.sale_date) AS running_total_profit
 FROM 
 SaleProfitCalc spc;
@@ -145,16 +145,16 @@ SaleProfitCalc spc;
 -- Finding the monthly total running sales across all stores
 WITH monthlysales AS
 (SELECT
-	spc.sale_date,
+    spc.sale_date,
     MONTH(spc.sale_date) AS month,
     YEAR(spc.sale_date) AS year,
     SUM(spc.sales) AS total_sales
-    FROM 
-	SaleProfitCalc spc
-    GROUP BY MONTH(spc.sale_date),YEAR(spc.sale_date)
+FROM 
+    SaleProfitCalc spc
+GROUP BY MONTH(spc.sale_date),YEAR(spc.sale_date)
 )
 SELECT	
-	monthlysales.*,
+    monthlysales.*,
     SUM(monthlysales.total_sales) OVER (ORDER BY monthlysales.year, monthlysales.month) AS rolling_monthly_sales
 FROM
 	monthlysales;
