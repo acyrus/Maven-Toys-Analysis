@@ -1,5 +1,5 @@
 # Maven Toys Analysis
-Sales analysis of the Maven Toys Chain Stores in Mexico, using SQL and PowerBI.
+Sales analysis of the Maven Toys Chain Stores in Mexico, using SQL and Power BI.
 
 # Overview
 We have been provided with sales & inventory data for a fictitious chain of toy stores in Mexico called Maven Toys, 
