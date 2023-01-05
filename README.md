@@ -383,7 +383,7 @@ FROM
 # Data Visualization
 After completing our initial analysis in MySQL, selected queries were exorted to Power BI, a visualization tool. Data visualization is essential, 
 as the grahical representation of data sets provides context to our data and allows us to visualze trends and patterns much more easily. These dashboards
-will provide essential KPIs, charts and tables which measures the progress of the business in generating sales and profits. 
+will provide essential KPIs, charts and tables which measure the progress of the business in generating sales and profits. 
 
 [Maven Toys Dashboards (PDF)](https://github.com/acyrus/Maven-Toys-Analysis/blob/main/Maven%20Toys%20Dashboards.pdf)
 
